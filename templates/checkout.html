@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <title>Checkout</title>
+</head>
+<body>
+ <div class="container col-6" align='center' >
+    <table class="table table-bordered   table-striped  "  style="margin-top: 75px;">
+        <thead class="table table-dark">
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+        </thead>
+        <tr>
+            <td id ="first"></td>
+            <td id ="second"></td>
+            <td id ="third"></td>
+        </tr>
+        <tr>
+            <td>Total</td>
+            <td></td>
+            <td id ='total'></td>
+        </tr>
+    </table>
+    <a href="/home" class="btn btn-dark">Home</a>
+    <a href="" class="btn btn-primary">Check</a>
+    
+ </div>
+   
+</body>
+
+<script>
+
+if(localStorage.getItem('cart') == null)
+{
+    var cart = {}
+}
+
+else
+{
+    cart = JSON.parse(localStorage.getItem('cart'))
+}
+ var total = 0
+for(var i in cart)
+{
+
+  quantity=cart[i][0]
+
+  name=cart[i][1]
+
+  price=cart[i][2]
+
+  total=total+price
+
+$("#first").append(`${name}<br>`)
+$("#second").append(`${quantity}<br>`)
+$("#third").append(`${price}<br>`)
+
+
+}
+$('#total').append(`${total}`)
+
+</script>
+
+</html>
